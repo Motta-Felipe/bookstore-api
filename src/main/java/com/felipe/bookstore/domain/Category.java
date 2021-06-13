@@ -1,20 +1,33 @@
 package com.felipe.bookstore.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Category {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity   //if not defined will get Category name as table name
+public class Category implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)  //
 	private int id;
 	private String name;
 	private String description;
 	
+	@OneToMany(mappedBy = "categoria")
 	private List<Book> books = new ArrayList<>();
 
+	
 	public Category() {
 	}
 
 	public Category(int id, String name, String description) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
@@ -73,6 +86,7 @@ public class Category {
 			return false;
 		return true;
 	}
+	
 	
 	
 	
