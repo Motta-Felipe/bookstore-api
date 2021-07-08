@@ -17,7 +17,7 @@ public class Book implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	private String title;
 	private String name_author;
 	private String text;
@@ -28,10 +28,9 @@ public class Book implements Serializable{
 
 	public Book() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Book(int id, String title, String name_author, String text, Category category) {
+	public Book(Integer id, String title, String name_author, String text, Category category) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -40,11 +39,11 @@ public class Book implements Serializable{
 		this.category = category;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
