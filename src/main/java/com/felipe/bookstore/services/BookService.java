@@ -49,4 +49,10 @@ public class BookService {
     }
 
 
+    public Book create(Integer id_cat, Book obj) {
+        obj.setId(null);
+        Category category = categoryService.findById(id_cat);
+        obj.setCategory(category);
+        return repository.save(obj);
+    }
 }
