@@ -38,6 +38,18 @@ public class BookResource {
         return ResponseEntity.ok().body(listDTO);
     }
 
+    @PutMapping(value="/{id}")
+    public ResponseEntity<Book> update(@PathVariable Integer id, @RequestBody Book obj){
+        Book newObj = service.update(id, obj);
+        return ResponseEntity.ok().body(newObj);
+    }
+
+    @PatchMapping(value="/{id}")
+    public ResponseEntity<Book> updatePatch(@PathVariable Integer id, @RequestBody Book obj){
+        Book newObj = service.update(id, obj);
+        return ResponseEntity.ok().body(newObj);
+    }
+
 
 
 

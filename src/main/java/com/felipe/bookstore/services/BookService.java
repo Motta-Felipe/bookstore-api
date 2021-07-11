@@ -1,5 +1,6 @@
 package com.felipe.bookstore.services;
 
+import com.felipe.bookstore.DTO.BookDTO;
 import com.felipe.bookstore.domain.Book;
 import com.felipe.bookstore.domain.Category;
 import com.felipe.bookstore.repositories.BookRepository;
@@ -34,4 +35,18 @@ public class BookService {
         Category obj = categoryService.findById(id);
         return obj.getBooks();
     }
+
+    public Book update(Integer id, Book obj) {
+        Book newObj = findById(id);
+        updateData(newObj, obj);
+        return repository.save(newObj);
+
+    }
+    private void updateData(Book newObj, Book obj) {
+        newObj.setName_author(obj.getName_author());
+        newObj.setText(obj.getText());
+        newObj.setTitle(obj.getTitle());
+    }
+
+
 }
