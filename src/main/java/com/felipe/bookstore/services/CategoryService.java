@@ -1,5 +1,6 @@
 package com.felipe.bookstore.services;
 
+import com.felipe.bookstore.DTO.CategoryDTO;
 import com.felipe.bookstore.domain.Category;
 import com.felipe.bookstore.repositories.CategoryRepository;
 import com.felipe.bookstore.services.exceptions.ObjectNotFoundException;
@@ -22,5 +23,17 @@ public class CategoryService {
 
     public List<Category> findAll(){
         return repository.findAll();
+    }
+
+    public Category create(Category obj){
+        obj.setId(null);
+        return repository.save(obj);
+    }
+
+    public Category update(Integer id, CategoryDTO objDto) {
+        Category obj = findById(id);
+               obj.setName(objDto.getName());
+            obj.setDescription(objDto.getDescription());
+        return repository.save(obj);
     }
 }
