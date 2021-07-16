@@ -1,9 +1,15 @@
 package com.felipe.bookstore.DTO;
 
 import com.felipe.bookstore.domain.Book;
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.NotEmpty;
 
 public class BookDTO {
     private Integer id;
+
+    @NotEmpty(message= "TITLE can't be empty")
+    @Length(min = 3, max = 50, message = "The TITLE field must have between 3 and 50 characters")
     private String title;
 
     public BookDTO() {

@@ -1,5 +1,7 @@
 package com.felipe.bookstore.domain;
 
+import org.hibernate.validator.constraints.Length;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
 
 @Entity   //if not defined will get Category name as table name
 public class Category implements Serializable{
@@ -17,7 +20,13 @@ public class Category implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)  //
 	private Integer id;
+
+	@NotEmpty(message= "NAME can't be empty")
+	@Length(min = 2, max = 100, message = "The NAME field must have between 3 and 100 characters")
 	private String name;
+
+	@NotEmpty(message= "DESCRIPTION can't be empty")
+	@Length(min = 3, max = 200, message = "The DESCRIPTION field must have between 3 and 100 characters")
 	private String description;
 	
 	@OneToMany(mappedBy = "category")
